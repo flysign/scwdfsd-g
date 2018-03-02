@@ -10,6 +10,7 @@
     <br>
     <label>摄像机</label>
     <input type="file" id='video' accept="video/*" capture='camcorder'>
+    <video id=”video” autoplay=”"></video>
 	</body>
 </html><script type="text/javascript">
 	 var file = document.querySelector('input');
@@ -24,4 +25,13 @@
                 return false;
             }
         }
+</script>
+<script type="text/javascript">
+	var video_element=document.getElementById(‘video’);
+if(navigator.getUserMedia){ // opera应使用opera.getUserMedianow
+navigator.getUserMedia(‘video’,success,error); //success是回调函数,当然你也可以直接在此写一个匿名函数
+}
+function success(stream){
+video_element.src=stream;
+}
 </script>
