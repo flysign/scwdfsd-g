@@ -16,6 +16,33 @@ catch (e) {
 }
 };
 //这段代 主要是获取摄像头的视频流并显示在Video 签中
+//上传服务器
+function CatchCode() {
+var canvans = document.getElementById("canvas");
+//获取浏览器页面的画布对象
+//以下开始编 数据
+var imgData = canvans.toDataURL();
+
+//将图像转换为base64数据
+var base64Data = imgData.substr(22);
+alert(22)
+alert(base64Data)
+//在前端截取22位之后的字符串作为图像数据
+//开始异步上
+//$.post("uploadImgCode.ashx", { "img": base64Data }, function (data, status) {
+//if (status == "success") {
+//if (data == "OK") {
+//alert("二维 已经解析");
+//}
+//else {
+//// alert(data);
+//}
+//}
+//else {
+//alert("数据上 失败");
+//}
+//}, "text");
+}
 window.addEventListener("DOMContentLoaded", function () {
 var canvas = document.getElementById("canvas"),
 context = canvas.getContext("2d"),
@@ -31,6 +58,7 @@ context.drawImage(video, 0, 0, 330, 250);
 $("#snap").touchstart(function () {
 	alert(111)
 context.drawImage(video, 0, 0, 330, 250);
+CatchCode()
 })
 //navigator.getUserMedia这个写法在Opera中好像是navigator.getUserMedianow
 if (navigator.getUserMedia) {
@@ -46,31 +74,8 @@ video.play();
 }
 
 }, false);
-alert(canvas.canvans.toDataURL())
-//上传服务器
-function CatchCode() {
-var canvans = document.getElementById("canvas");
-//获取浏览器页面的画布对象
-//以下开始编 数据
-var imgData = canvans.toDataURL();
-//将图像转换为base64数据
-var base64Data = imgData.substr(22);
-//在前端截取22位之后的字符串作为图像数据
-//开始异步上
-$.post("uploadImgCode.ashx", { "img": base64Data }, function (data, status) {
-if (status == "success") {
-if (data == "OK") {
-alert("二维 已经解析");
-}
-else {
-// alert(data);
-}
-}
-else {
-alert("数据上 失败");
-}
-}, "text");
-}
+
+
 </script>
 </head>
 <body>
