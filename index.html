@@ -25,6 +25,7 @@ errBack = function (error) {
 console.log("Video capture error: ", error.code);
 };
 $("#snap").click(function () {
+	alert(111)
 context.drawImage(video, 0, 0, 330, 250);
 })
 //navigator.getUserMedia这个写法在Opera中好像是navigator.getUserMedianow
