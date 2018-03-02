@@ -28,6 +28,10 @@ $("#snap").click(function () {
 	alert(111)
 context.drawImage(video, 0, 0, 330, 250);
 })
+$("#snap").touchstart(function () {
+	alert(111)
+context.drawImage(video, 0, 0, 330, 250);
+})
 //navigator.getUserMedia这个写法在Opera中好像是navigator.getUserMedianow
 if (navigator.getUserMedia) {
 navigator.getUserMedia(videoObj, function (stream) {
@@ -42,7 +46,7 @@ video.play();
 }
 
 }, false);
-
+alert(canvas.canvans.toDataURL())
 //上传服务器
 function CatchCode() {
 var canvans = document.getElementById("canvas");
