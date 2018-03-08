@@ -146,6 +146,7 @@ function setwebcam() {
 
 			navigator.mediaDevices.enumerateDevices()
 				.then(function(devices) {
+					console.log(devices)
 					devices.forEach(function(device) {
 						if(device.kind === 'videoinput') {
 							if(device.label.toLowerCase().search("back") > -1)
