@@ -104,7 +104,7 @@ function isCanvasSupported() {
 	var elem = document.createElement('canvas');
 	return !!(elem.getContext && elem.getContext('2d'));
 }
-
+//调用视频流成功后
 function success(stream) {
 	if(webkit)
 		v.src = window.URL.createObjectURL(stream);
@@ -136,7 +136,7 @@ function load() {
 			'<p id="mp1">try <a href="http://www.mozilla.com/firefox"><img src="firefox.png"/></a> or <a href="http://chrome.google.com"><img src="chrome_logo.gif"/></a> or <a href="http://www.opera.com"><img src="Opera-logo.png"/></a></p>';
 	}
 }
-
+//点击视频
 function setwebcam() {
 
 	var options = true;
@@ -219,7 +219,7 @@ console.log(n.getUserMedia);
 	stype = 1;
 	setTimeout(captureToCanvas, 500);
 }
-
+//点击照相
 function setimg() {
 	document.getElementById("result").innerHTML = "";
 	if(stype == 2)
