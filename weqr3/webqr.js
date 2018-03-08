@@ -106,6 +106,7 @@ function isCanvasSupported() {
 }
 //调用视频流成功后
 function success(stream) {
+	console.log('我在这里'+stream)
 	if(webkit)
 		v.src = window.URL.createObjectURL(stream);
 	else
