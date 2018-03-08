@@ -191,11 +191,26 @@
 //						var video = document.getElementById('v');
 //						video.src = 'http://192.168.82.13/szbwg-cms/userfiles/uploadFile/20180107085158.mp4';
 						
-					var myConstraints={
-						audio:true,video:true
-					};
+//					var myConstraints={
+//						audio:true,video:true
+//					};
 //					navigator.mediaDevices.getUserMedia
-					getUserMedia({video:true}).then((localMediaStream)=>{
+//					navigator.mediaDevices.getUserMedia({video:true}).then((localMediaStream)=>{
+//						alert(333)
+//						console.log(localMediaStream)
+//						console.log('++++');
+//						var video = document.getElementById('video');
+////						video.src = 'http://192.168.82.13/szbwg-cms/userfiles/uploadFile/20180107085158.mp4';
+//						video.src = window.URL.createObjectURL(localMediaStream);   
+//						video.onloadedmetadata = function(e) {
+//							console.log("Label: " + localMediaStream.label);
+//							console.log("AudioTracks", localMediaStream.getAudioTracks());
+//							console.log("VideoTracks", localMediaStream.getVideoTracks());
+//						};
+//					},(error)=>{
+//						console.log(error)
+//					})
+					getUserMedia.call(navigator,{video:true},function(localMediaStream){
 						alert(333)
 						console.log(localMediaStream)
 						console.log('++++');
@@ -208,7 +223,7 @@
 							console.log("VideoTracks", localMediaStream.getVideoTracks());
 						};
 					},(error)=>{
-						console.log(error)
+						console.log('错误'+error)
 					})
 				</script>
 	</body>
