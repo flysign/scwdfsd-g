@@ -205,7 +205,7 @@
 					navigator.mediaDevices.getUserMedia({video:true}).then((localMediaStream)=>{
 						alert(333)
 						console.log('++++');
-						var video = document.getElementById('video');
+						var video = document.getElementById('v');
 //						video.src = 'http://192.168.82.13/szbwg-cms/userfiles/uploadFile/20180107085158.mp4';
 						video.src = window.URL.createObjectURL(localMediaStream);   
 						video.onloadedmetadata = function(e) {
