@@ -180,8 +180,8 @@
 					load();
 				</script>
 				<script type="text/javascript">
-					var getUserMedia = (navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia);
-//					
+//					var getUserMedia = (navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia);
+////					
 //					getUserMedia.call(navigator, {
 //						video: true,
 //						audio: true
@@ -194,7 +194,7 @@
 					var myConstraints={
 						audio:true,video:true
 					};
-					getUserMedia({video:true}).then((localMediaStream)=>{
+					navigator.mediaDevices.getUserMedia({video:true}).then((localMediaStream)=>{
 						alert(333)
 						console.log(localMediaStream)
 						console.log('++++');
