@@ -4,7 +4,7 @@
 		<meta charset="UTF-8">
 		<title></title>
 		<style type="text/css">
-			video{height: 100%;width: 100%;}
+			video{width: 100%;height: 100%;}
 		</style>
 	</head>
 	<body>
@@ -13,22 +13,9 @@
 </html>
 <script type="text/javascript">
 	var video = document.querySelector('#video')
-	 var exArray = []; //存储设备源ID  
-        MediaStreamTrack.getSources(function (sourceInfos) {  
-            for (var i = 0; i != sourceInfos.length; ++i) {  
-                var sourceInfo = sourceInfos[i];  
-                //这里会遍历audio,video，所以要加以区分  
-                if (sourceInfo.kind === 'video') {  
-                    exArray.push(sourceInfo.id);  
-                }  
-            }  
-        }); 
 var myConstraints = {
   video: {
-//  facingMode: 'user' // 优先调用前置摄像头
-     'optional': [{  
-                            'sourceId': exArray[1] //0为前置摄像头，1为后置  
-                        }]  
+    facingMode: 'user' // 优先调用前置摄像头
   }
 }
 navigator.mediaDevices.getUserMedia(myConstraints).then((stream) => {
