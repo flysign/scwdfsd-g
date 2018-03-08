@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			video{height: 100%;width: 100%;}
+		</style>
+	</head>
+	<body>
+		<video id="video"></video>
+	</body>
+</html>
+<script type="text/javascript">
+	var video = document.querySelector('#video')
+var myConstraints = {
+  video: {
+    facingMode: 'user' // 优先调用前置摄像头
+  }
+}
+navigator.mediaDevices.getUserMedia(myConstraints).then((stream) => {
+  // createObjectURL是个非常有用的API，诸位可以多研究研究
+  video.src = window.URL.createObjectURL(stream)
+  video.play()
+}, (error) => {
+  console.error(error.name || error)
+})
+</script>
