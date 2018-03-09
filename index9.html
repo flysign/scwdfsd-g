@@ -8,14 +8,14 @@
 
 	<body>
 		<input type="file" onchange="handleFiles(this.files)"/>
-		<canvas id="out-canvas" width="320" height="240">
+		<canvas id="outcanvas" width="320" height="240">
 	</body>
 
 </html>
 <script src="weqr/llqrcode.js" type="text/javascript" charset="utf-8"></script>
 <script type="text/javascript">
 	var gCtx = null;
-	gCanvas = document.getElementById("out-canvas");
+	gCanvas = document.getElementById("outcanvas");
 	gCtx=gCanvas.getContext("2d");
 	function dragenter(e) {
 	e.stopPropagation();
