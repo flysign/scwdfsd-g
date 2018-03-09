@@ -5,7 +5,7 @@
 		<title></title>
 	</head>
 	<body>
-		 <input type="button" title="开启摄像头" value="开启摄像头" onclick="getMedia();" /><br />  
+		 <input type="button" title="开启摄像头" value="开启摄像头" onclick="setwebcam();" /><br />  
     <video height="120px" autoplay="autoplay"></video><hr />  
     <input type="button" title="拍照" value="拍照" onclick="getPhoto();" /><br />  
     <canvas id="canvas1" height="120px" ></canvas><hr />  
@@ -36,14 +36,15 @@
             }  
         });  
   
-        function getMedia() {  
+        function getMedia(options) {  
             if (navigator.getUserMedia) {  
                 navigator.getUserMedia({  
-                    'video': {  
-                        'optional': [{  
-                            'sourceId': exArray[0] //0为前置摄像头，1为后置  
-                        }]  
-                    },  
+//                  'video': {  
+//                      'optional': [{  
+//                          'sourceId': exArray[0] //0为前置摄像头，1为后置  
+//                      }]  
+//                  },
+					'video':options,
                     'audio':true  
                 }, successFunc, errorFunc);    //success是获取成功的回调函数  
             }  
@@ -51,7 +52,42 @@
                 alert('Native device media streaming (getUserMedia) not supported in this browser.');  
             }  
         }  
-  
+  function setwebcam() {
+
+	var options = true;
+	if(navigator.mediaDevices && navigator.mediaDevices.enumerateDevices) {
+
+		try {
+
+			navigator.mediaDevices.enumerateDevices()
+				.then(function(devices) {
+					console.log(devices,typeof(devices))
+					devices.forEach(function(device) {
+						if(device.kind === 'videoinput') {
+							if(device.label.toLowerCase().search("back") > -1)
+								options = {
+									'deviceId': {
+										'exact': device.deviceId
+									},
+									'facingMode': 'environment'
+								};
+						}
+
+						console.log(device.kind + ": " + device.label + " id = " + device.deviceId);
+					});
+
+					getMedia(options);
+				});
+		} catch(e) {
+			console.log(e);
+		}
+	} else {
+		alert(options);
+		console.log("no navigator.mediaDevices.enumerateDevices");
+		getMedia(options);
+	}
+
+}
         function successFunc(stream) {  
             //alert('Succeed to get media!');  
             if (video.mozSrcObject !== undefined) {  
