@@ -174,7 +174,7 @@ alert(JSON.stringify(navigator.mediaDevices));
 function setwebcam2(options) {
 //	alert('ddd',JSON.stringify(options));
 	console.log(options);
-	document.getElementById("result").innerHTML = "鎵弿鐨勭粨鏋�";
+	document.getElementById("result").innerHTML ="扫描结果";
 	//	document.getElementById("result").innerHTML="- scanning -";
 	if(stype == 1) {
 		setTimeout(captureToCanvas, 500);
@@ -186,6 +186,10 @@ function setwebcam2(options) {
 
 	if(n.getUserMedia) {
 		webkit = true;
+//		 [{  
+//                          'sourceId': exArray[1] //0为前置摄像头，1为后置  
+//                      }]  
+alert(options);
 		n.getUserMedia({
 			video: options,
 			audio: false
