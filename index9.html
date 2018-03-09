@@ -9,6 +9,9 @@
 	<body>
 		<input type="file" onchange="handleFiles(this.files)"/>
 		<canvas id="outcanvas" width="320" height="240">
+		<div id="result">
+			
+		</div>
 	</body>
 
 </html>
@@ -56,7 +59,22 @@ function handleFiles(f) {
 		reader.readAsDataURL(f[i]);
 	}
 }
-
+function read(a) {
+	var html = "<br>";
+	if(a.indexOf("http://") === 0 || a.indexOf("https://") === 0)
+		html += "<a target='_blank' href='" + a + "'>" + a + "</a><br>";
+	html += "<b>" + htmlEntities(a) + "</b><br><br>";
+	document.getElementById("result").innerHTML = html;
+}
+function load() {
+	if(isCanvasSupported() && window.File && window.FileReader) {
+		initCanvas(800, 600);
+		qrcode.callback = read;
+//		setwebcam();
+	} else {
+		
+	}
+}
 	//点击照相
 	function setimg() {
 		document.getElementById("result").innerHTML = "";
@@ -73,4 +91,7 @@ function handleFiles(f) {
 		qrfile.addEventListener("drop", drop, false);
 		stype = 2;
 	}
+</script>
+<script type="text/javascript">
+	load()
 </script>
