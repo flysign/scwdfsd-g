@@ -189,7 +189,7 @@ function setwebcam2(options) {
 //		 [{  
 //                          'sourceId': exArray[1] //0为前置摄像头，1为后置  
 //                      }]  
-alert(JSON.stringify(options));
+alert('lll',JSON.stringify(options));
 		n.getUserMedia({
 			video: options,
 			audio: false
