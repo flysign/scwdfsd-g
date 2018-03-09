@@ -10,8 +10,8 @@
     <input type="button" title="拍照" value="拍照" onclick="getPhoto();" /><br />  
     <canvas id="canvas1" height="120px" ></canvas><hr />  
     <input type="button" title="视频" value="视频" onclick="getVedio();" /><br />  
-    <canvas id="canvas2" height="120px"></canvas>  
-  
+    <canvas id="qr-canvas" height="120px"></canvas>  
+  	<script src="weqr2/llqrcode.js" type="text/javascript" charset="utf-8"></script>
     <script type="text/javascript">  
         var video = document.querySelector('video');  
         var audio, audioType;  
@@ -19,7 +19,7 @@
         var canvas1 = document.getElementById('canvas1');  
         var context1 = canvas1.getContext('2d');  
   
-        var canvas2 = document.getElementById('canvas2');  
+        var canvas2 = document.getElementById('qr-canvas');  
         var context2 = canvas2.getContext('2d');  
   
         navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;  
@@ -88,6 +88,21 @@
 	}
 
 }
+  function initCanvas(w, h) {
+	gCanvas = document.getElementById("qr-canvas");
+	gCanvas.style.width = w + "px";
+	gCanvas.style.height = h + "px";
+	gCanvas.width = w;
+	gCanvas.height = h;
+	gCtx = gCanvas.getContext("2d");
+	gCtx.clearRect(0, 0, w, h);
+}
+  function load(){
+  		initCanvas(800, 600);
+		qrcode.callback = function(e){alert(e)};
+//		document.getElementById("mainbody").style.display = "inline";
+		setwebcam();
+  }
         function successFunc(stream) {  
             //alert('Succeed to get media!');  
             if (video.mozSrcObject !== undefined) {  
