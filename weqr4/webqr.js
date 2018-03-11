@@ -1,5 +1,5 @@
 
-
+alert(33333)
 var gCtx = null;
 var gCanvas = null;
 var c = 0;
@@ -92,6 +92,7 @@ function htmlEntities(str) {
 }
 
 function read(a) {
+	alert(a);
 	var html = "<br>";
 	if(a.indexOf("http://") === 0 || a.indexOf("https://") === 0)
 		html += "<a target='_blank' href='" + a + "'>" + a + "</a><br>";
@@ -170,7 +171,16 @@ alert(JSON.stringify(navigator.mediaDevices));
 	}
 
 }
-
+var exArray = []; //存储设备源ID  
+        MediaStreamTrack.getSources(function (sourceInfos) {  
+            for (var i = 0; i != sourceInfos.length; ++i) {  
+                var sourceInfo = sourceInfos[i];  
+                //这里会遍历audio,video，所以要加以区分  
+                if (sourceInfo.kind === 'video') {  
+                    exArray.push(sourceInfo.id);  
+                }  
+            }  
+        });  
 function setwebcam2(options) {
 //	alert('ddd',JSON.stringify(options));
 	console.log(options);
@@ -186,9 +196,10 @@ function setwebcam2(options) {
 
 	if(n.getUserMedia) {
 		webkit = true;
-//		 [{  
-//                          'sourceId': exArray[1] //0为前置摄像头，1为后置  
-//                      }]  
+		option= [{  
+                            'sourceId': exArray[1] //0为前置摄像头，1为后置  
+                        }];
+                        
 alert('lll',JSON.stringify(options));
 		n.getUserMedia({
 			video: options,
