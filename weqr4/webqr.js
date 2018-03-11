@@ -1,5 +1,5 @@
 
-alert(33333)
+alert(44444)
 var gCtx = null;
 var gCanvas = null;
 var c = 0;
@@ -93,6 +93,7 @@ function htmlEntities(str) {
 
 function read(a) {
 	alert(a);
+	window.location.href=a
 	var html = "<br>";
 	if(a.indexOf("http://") === 0 || a.indexOf("https://") === 0)
 		html += "<a target='_blank' href='" + a + "'>" + a + "</a><br>";
