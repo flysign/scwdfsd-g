@@ -1,5 +1,5 @@
 
-alert(44444)
+alert(55555)
 var gCtx = null;
 var gCanvas = null;
 var c = 0;
@@ -92,8 +92,14 @@ function htmlEntities(str) {
 }
 
 function read(a) {
-	alert(a);
-	window.location.href=a
+//	alert(a);
+	var reg = /((http|https|ftp):(\/\/|\\\\))*((\w)+[.])+(net|com|cn|org|cc|tv|[0-9]{1，3})[\?,~,=,.\/,&,$,\w]*(\/[\?,~,=,.\/,&,$,\w]*)*/img;
+	if(reg.test(a)){
+		window.location.href=a
+	}else{
+		alert('这不是一个网址')
+	}
+	
 	var html = "<br>";
 	if(a.indexOf("http://") === 0 || a.indexOf("https://") === 0)
 		html += "<a target='_blank' href='" + a + "'>" + a + "</a><br>";
