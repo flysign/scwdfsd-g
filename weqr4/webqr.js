@@ -147,7 +147,7 @@ function load() {
 // 
 function setwebcam() {
 //	console.log(navigator.mediaDevices);
-alert(JSON.stringify(navigator.mediaDevices));
+//alert(JSON.stringify(navigator.mediaDevices));
 //alert(JSON.stringify(window.navigator));
 	var options = true;
 	if(navigator.mediaDevices && navigator.mediaDevices.enumerateDevices) {
@@ -207,7 +207,7 @@ function setwebcam2(options) {
                             'sourceId': exArray[1] //0为前置摄像头，1为后置  
                         }];
                         
-alert('lll',JSON.stringify(options));
+//alert('lll',JSON.stringify(options));
 		n.getUserMedia({
 			video: options,
 			audio: false
